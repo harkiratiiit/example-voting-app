@@ -83,9 +83,8 @@ jobs:
           --namespace ${{steps.generate-child-space-name.outputs.result}} \
           --set image.repository=${{ secrets.CONTAINER_REGISTRY }}/vote \
           --set image.tag=$GITHUB_SHA \
-          --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET }} \
-          --force \
-          --atomic
+          --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET }} 
+
  
     - uses: azure/dev-spaces/actions/add-review-url@Releases/v2
       with:
