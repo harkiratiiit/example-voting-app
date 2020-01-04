@@ -5,7 +5,7 @@ on:
     branches:
     - master
     paths:
-    - vote/dotnet/Vote/**
+    - vote/dotnet/vote/**
 
 jobs:
   build:
