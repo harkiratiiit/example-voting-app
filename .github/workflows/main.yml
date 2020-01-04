@@ -79,7 +79,7 @@ jobs:
     - name: Helm Upgrade PR
       run: |        
         ${{steps.install-helm-client.outputs.helm}} upgrade \
-          --install  ${{steps.generate-release-name.outputs.result}} vote/charts/vote \
+          --install  ${{steps.generate-release-name.outputs.result}} vote/dotnet/Vote/charts/vote \
           --namespace ${{steps.generate-child-space-name.outputs.result}} \
           --set image.repository=${{ secrets.CONTAINER_REGISTRY }}/vote \
           --set image.tag=$GITHUB_SHA \
