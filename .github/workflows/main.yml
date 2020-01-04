@@ -5,7 +5,7 @@ on:
     branches:
     - master
     paths:
-    - vote/dotnet/**
+    - vote/**
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     - run: |
-        docker build vote/dotnet/ -t ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
+        docker build vote/ -t ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
         docker push ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
       
     - uses: azure/aks-set-context@v1
@@ -79,7 +79,7 @@ jobs:
     - name: Helm Upgrade PR
       run: |        
         ${{steps.install-helm-client.outputs.helm}} upgrade \
-          --install  ${{steps.generate-release-name.outputs.result}} vote/dotnet/Vote/charts/vote \
+          --install  ${{steps.generate-release-name.outputs.result}} vote/charts/vote \
           --namespace ${{steps.generate-child-space-name.outputs.result}} \
           --set image.repository=${{ secrets.CONTAINER_REGISTRY }}/vote \
           --set image.tag=$GITHUB_SHA \
