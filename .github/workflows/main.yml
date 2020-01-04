@@ -5,7 +5,7 @@ on:
     branches:
     - master
     paths:
-    - vote/dotnet/vote/**
+    - vote/dotnet/Vote/**
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     - run: |
-        docker build vote/dotnet/Vote/ -t ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
+        docker build vote/dotnet/vote/ -t ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
         docker push ${{ secrets.CONTAINER_REGISTRY }}/vote:$GITHUB_SHA
       
     - uses: azure/aks-set-context@v1
