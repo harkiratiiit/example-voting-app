@@ -83,7 +83,7 @@ jobs:
           --namespace ${{steps.generate-child-space-name.outputs.result}} \
           --set image.repository=${{ secrets.CONTAINER_REGISTRY }}/vote \
           --set image.tag=$GITHUB_SHA \
-          --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET }} 
+          --set imagePullSecrets[0].name=${{ secrets.IMAGE_PULL_SECRET }} \
           --set ingress.hosts[0]=${{ secrets.HOST }} \
           --set ingress.annotations.kubernetes\\.io/ingress\\.class=traefik-azds \
 
