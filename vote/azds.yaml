@@ -22,7 +22,7 @@ install:
     image:
       repository: vote
       tag: $(tag)
-      pullPolicy: Never
+      pullPolicy: Always
     ingress:
       annotations:
         kubernetes.io/ingress.class: traefik-azds
