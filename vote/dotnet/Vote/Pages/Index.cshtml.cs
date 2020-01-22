@@ -13,6 +13,8 @@ namespace Vote.Pages
         private string _optionA;
         private string _optionB;
 
+        private string _optionC;
+
         protected readonly IMessageQueue _messageQueue;
         protected readonly IConfiguration _configuration;
         protected readonly ILogger _logger;
@@ -25,11 +27,14 @@ namespace Vote.Pages
 
             _optionA = _configuration.GetValue<string>("Voting:OptionA");
             _optionB = _configuration.GetValue<string>("Voting:OptionB");
+            _optionC = _configuration.GetValue<string>("Voting:OptionC");
         }
 
         public string OptionA { get; private set; }
 
         public string OptionB { get; private set; }
+
+        public string OptionC { get; private set; }
 
         [BindProperty]
         public string Vote { get; private set; }
@@ -44,6 +49,7 @@ namespace Vote.Pages
         {
             OptionA = _optionA;
             OptionB = _optionB;
+            OptionC= _optionC;
         }
 
         public IActionResult OnPost(string vote)
@@ -51,6 +57,7 @@ namespace Vote.Pages
             Vote = vote;
             OptionA = _optionA;
             OptionB = _optionB;
+            OptionC= _optionC;
             if (_configuration.GetValue<bool>("MessageQueue:Enabled"))
             {
                 PublishVote(vote);
