@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>@Model.OptionA vs @Model.OptionB!</title>
+    <title>@Model.OptionA vs @Model.OptionB vs @Model.OptionC!</title>
     <base href="/index.html">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0">
     <meta name="keywords" content="docker-compose, docker, stack">
@@ -16,13 +16,14 @@
 <body>
     <div id="content-container">
         <div id="content-container-center">
-            <h3>@Model.OptionA vs @Model.OptionB!</h3>
+            <h3>@Model.OptionA vs @Model.OptionB vs @Model.OptionC!</h3>
             <form method="POST" id="choice" name='form'>
                 <button id="a" type="submit" name="vote" class="a" value="a">@Model.OptionA</button>
                 <button id="b" type="submit" name="vote" class="b" value="b">@Model.OptionB</button>
+                <button id="c" type="submit" name="vote" class="c" value="c">@Model.OptionC</button>
             </form>
             <div id="tip">
-                (Tip: you can change your vote)
+                (Tips: you can change your vote)
             </div>
             <div id="hostname">
                 Processed by container ID @System.Environment.MachineName
@@ -39,11 +40,19 @@
         $(".a").prop('disabled', true);
         $(".a").html('@Model.OptionA <i class="fa fa-check-circle"></i>');
         $(".b").css('opacity','0.5');
+        $(".c").css('opacity','0.5');
       }
       if(vote == "b"){
         $(".b").prop('disabled', true);
         $(".b").html('@Model.OptionB <i class="fa fa-check-circle"></i>');
         $(".a").css('opacity','0.5');
+        $(".c").css('opacity','0.5');
+      }
+      if(vote == "c"){
+        $(".c").prop('disabled', true);
+        $(".c").html('@Model.OptionC <i class="fa fa-check-circle"></i>');
+        $(".a").css('opacity','0.5');
+        $(".b").css('opacity','0.5');
       }
     </script>
 </body>
